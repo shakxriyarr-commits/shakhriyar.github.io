@@ -482,6 +482,66 @@ body {
     transform: scale(1.2);
 }
 
+/* --- Oldingi CSS kodlaringiz shunday qoladi --- */
+
+/* Til almashtirish tugmalari */
+.lang-switch {
+    display: flex;
+    gap: 10px;
+}
+
+.lang-switch button {
+    background: transparent;
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.lang-switch button:hover, 
+.lang-switch button.active {
+    background: #3b82f6;
+    color: #fff;
+    border-color: #3b82f6;
+}
+
+/* Men haqimda bo'limi */
+.about-me {
+    padding: 100px 8%;
+    background: #050814;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #0f172a;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-text p {
+    color: #cbd5e1;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* Mobil moslashuvchanlik ichiga shuni qo'shib qo'ying */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    .lang-switch {
+        margin-top: 10px;
+    }
+}
 /* Mobil moslashuvchanlik */
 @media (max-width: 768px) {
     .nav-links { 
