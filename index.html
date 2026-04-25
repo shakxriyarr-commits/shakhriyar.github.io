@@ -11,20 +11,25 @@
 <body>
 <section id="navba">
    <nav class="navbar">
-        <a href="#" class="logo">Shahriyor<span>.</span></a>
-        <ul class="nav-links">
-            <li><a href="#home" data-i18n="nav_home">Asosiy</a></li>
-            <li><a href="#about" data-i18n="nav_about">Men Haqimda</a></li>
-            <li><a href="#services" data-i18n="nav_services">Xizmatlar</a></li>
-            <li><a href="#projects" data-i18n="nav_projects">Loyihalarim</a></li>
-            <li><a href="#contact" data-i18n="nav_contact">Aloqa</a></li>
-        </ul>
-        <div class="lang-switch">
-              <button onclick="changeLang('uz')" id="btn-uz" class="active">UZ</button>
-            <button onclick="changeLang('ru')" id="btn-ru">RU</button>
-          
-        </div>
-    </nav>
+    <a href="#" class="logo">Shahriyor<span>.</span></a>
+    
+    <div class="menu-btn" id="menuBtn">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home" data-i18n="nav_home">Asosiy</a></li>
+        <li><a href="#about" data-i18n="nav_about">Men Haqimda</a></li>
+        <li><a href="#services" data-i18n="nav_services">Xizmatlar</a></li>
+        <li><a href="#projects" data-i18n="nav_projects">Loyihalarim</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Aloqa</a></li>
+    </ul>
+    
+    <div class="lang-switch">
+        <button onclick="changeLang('uz')" id="btn-uz" class="active">UZ</button>
+        <button onclick="changeLang('ru')" id="btn-ru">RU</button>
+    </div>
+</nav>
     </section>
 
     <section id="home" class="hero">
