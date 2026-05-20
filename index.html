@@ -1,17 +1,659 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shahriyor Allaberganov | Dasturchi va Bot Yaratuvchi</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Sabirov Mustajob | Robototexnika Muhandisi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-     <link rel="icon" type="image/png" href="./pngfon.png">
+    <link rel="icon" type="image/png" href="./pngfon.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #050814; 
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 8, 20, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #3b82f6; 
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.4s;
+            display: inline-block;
+        }
+
+        .btn.primary {
+            background: #3b82f6;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn.primary:hover {
+            background: #2563eb;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #3b82f6;
+        }
+
+        .btn.secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #050814 100%);
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-content h1 {
+            font-size: 50px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: #3b82f6;
+        }
+
+        .hero-content h3 {
+            font-size: 26px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: #cbd5e1;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #3b82f6;
+        }
+
+        .services, .portfolio, .contact {
+            padding: 100px 8%;
+        }
+
+        .service-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-box {
+            background: #0f172a;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .service-box i {
+            font-size: 50px;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+
+        .service-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .service-box p {
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .profile-img-container img {
+            border-radius: 50%;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border: solid 5px #3b82f6;
+            margin: 0 auto;
+        }
+
+        .card-info h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card-info p {
+            color: #94a3b8;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-link:hover {
+            color: #81b9fd;
+            gap: 15px;
+        }
+
+        .contact-content {
+            text-align: center;
+            background: #0f172a;
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .contact-content p {
+            font-size: 18px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: #050814;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            transition: 0.4s;
+        }
+
+        .social-links a:hover {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+        }
+
+        .social-links-minimal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff !important;
+            font-size: 24px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icon i {
+            display: block;
+            line-height: 1;
+        }
+
+        .social-icon.tg:hover {
+            background: #0088cc;
+            box-shadow: 0 0 20px rgba(0, 136, 204, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .social-icon.insta:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            box-shadow: 0 0 20px rgba(220, 39, 67, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .main-footer {
+            background-color: #03081f;
+            padding: 80px 8% 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hrbek{
+            color: #020511;
+            background-color:#020511 ;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            margin-top: 20px;
+            line-height: 1.6;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-links-grid {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #fff;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3b82f6;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .footer-legal a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #0f172a;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            text-align: center;
+        }
+
+        .contact-form-main {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .contact-form-main input, 
+        .contact-form-main textarea {
+            width: 100%;
+            background: #050814;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            color: white;
+            border-radius: 10px;
+            outline: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .contact-form-main textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .contact-form-main input:focus, 
+        .contact-form-main textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .full-width {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .icon-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .icon-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-switch button {
+            background: transparent;
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .lang-switch button:hover, 
+        .lang-switch button.active {
+            background: #3b82f6;
+            color: #fff;
+            border-color: #3b82f6;
+        }
+
+        .about-me {
+            padding: 100px 8%;
+            background: #050814;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #0f172a;
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-text p {
+            color: #cbd5e1;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .menu-btn {
+            display: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            order: 2;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 15px 5% !important;
+            }
+
+            .logo {
+                font-size: 20px !important;
+                order: 1;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .lang-switch {
+                order: 3;
+                margin-top: 0 !important;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(5, 8, 20, 0.98);
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+                border-bottom: 2px solid #3b82f6;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            .lang-switch {
+                margin-top: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; 
+            }
+            
+            .profile-img-container img {
+                max-width: 250px;
+            }
+
+            .hero-content h1 { 
+                font-size: 32px;
+            }
+            
+            .hero-content h3 {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+
+            .hero-buttons { 
+                flex-direction: column; 
+                gap: 15px;
+            }
+
+            .btn { 
+                text-align: center; 
+                width: 100%;
+            }
+
+            .footer-container { 
+                flex-direction: column; 
+            }
+
+            .footer-bottom { 
+                flex-direction: column; 
+                gap: 15px; 
+                text-align: center; 
+            }
+            
+            .services, .portfolio, .contact, .main-footer {
+                padding: 60px 5%;
+            }
+            .hero {
+                padding: 0 5%;
+            }
+        }
+    </style>
 </head>
 <body>
 <section id="navba">
    <nav class="navbar">
-    <a href="#" class="logo">Shahriyor<span>.</span></a>
+    <a href="#" class="logo">Mustajob<span>.</span></a>
     
     <div class="menu-btn" id="menuBtn">
         <i class="fas fa-bars"></i>
@@ -35,10 +677,10 @@
     <section id="home" class="hero">
         <div class="hero-content reveal">
             <div class="profile-img-container">
-                <img src="./IMG_20260422_090904_716.jpg" alt="Shahriyor" class="profile-img">
+                <img src="./pngfon.png" alt="Sabirov Mustajob" class="profile-img">
             </div>
-            <h1 data-i18n="hero_hi">Salom, men <span>Shahriyor Allaberganov</span></h1>
-            <h3 data-i18n="hero_role">Web va Telegram Bot Dasturchisi</h3>
+            <h1 data-i18n="hero_hi">Salom, men <span>Sabirov Mustajob</span></h1>
+            <h3 data-i18n="hero_role">Robototexnika va Mexatronika Muhandisi</h3>
             <div class="hero-buttons">
                 <a href="#projects" class="btn primary" data-i18n="hero_btn_projects">Loyihalarni Ko'rish</a>
                 <a href="#contact" class="btn secondary" data-i18n="hero_btn_contact">Buyurtma Berish</a>
@@ -51,7 +693,7 @@
         <div class="about-container reveal">
             <div class="about-text">
                 <p data-i18n="about_text">
-                    Mening ismim Shahriyor. IT sohasiga kirib kelganimga 1 yil bo'ldi. Shu vaqt ichida veb-saytlar yaratish, Telegram botlar tuzish va ularni internetga joylashni (hosting) o'rgandim. Men bu bilimlarni ustozim Abror Bektemirov qo'l ostida o'rgandim va hozirda ham "Kemapro Education" o'quv markazida ularning rahbarligida ta'lim olmoqdaman.
+                    Mening ismim Mustajob. Robototexnika va muhandislik sohasiga juda qiziqaman. Shu vaqt ichida Arduino, Raspberry Pi va turli datchiklar yordamida aqlli tizimlar hamda avtonom robotlar yaratishni o'rgandim. Men bu bilimlarni muntazam ravishda amaliyotda qollab, mexatronika yo'nalishida o'z ustimda ishlamoqdaman.
                 </p>
             </div>
         </div>
@@ -61,19 +703,19 @@
         <h2 class="section-title reveal" data-i18n="services_title">Mening <span>Xizmatlarim</span></h2>
         <div class="service-container">
             <div class="service-box reveal">
-                <i class="fas fa-laptop-code"></i>
-                <h3 data-i18n="srv_web_title">Web Dasturlash</h3>
-                <p data-i18n="srv_web_desc">HTML, CSS va JS yordamida har qanday murakkablikdagi, interaktiv va chiroyli veb-saytlarni yarataman.</p>
+                <i class="fas fa-robot"></i>
+                <h3 data-i18n="srv_web_title">Robototexnika</h3>
+                <p data-i18n="srv_web_desc">Arduino va Raspberry Pi yordamida har qanday murakkablikdagi avtonom robotlar va aqlli qurilmalar yarataman.</p>
             </div>
             <div class="service-box reveal">
-                <i class="fab fa-telegram-plane"></i>
-                <h3 data-i18n="srv_bot_title">Telegram Botlar</h3>
-                <p data-i18n="srv_bot_desc">Mukammal admin paneliga ega, mijozlar bilan ishlash va savdo-sotiq (korzinka) tizimlariga ega botlar.</p>
+                <i class="fas fa-microchip"></i>
+                <h3 data-i18n="srv_bot_title">Aqlli Uy Tizimlari</h3>
+                <p data-i18n="srv_bot_desc">Uylar va ofislar uchun IoT (Internet of Things) texnologiyalari asosida qulay boshqaruv tizimlari.</p>
             </div>
             <div class="service-box reveal">
-                <i class="fas fa-paint-brush"></i>
-                <h3 data-i18n="srv_design_title">Modern Dizayn</h3>
-                <p data-i18n="srv_design_desc">Foydalanuvchilarni o'ziga tortadigan "Luxury Dark" va boshqa zamonaviy UI/UX yechimlar.</p>
+                <i class="fas fa-bolt"></i>
+                <h3 data-i18n="srv_design_title">Elektronika</h3>
+                <p data-i18n="srv_design_desc">Sxemalar chizish, mikrokontrollerlarni dasturlash va elektr zanjirlarini xavfsiz yig'ish.</p>
             </div>
         </div>
     </section>
@@ -83,23 +725,23 @@
  <div class="portfolio-container">
             <div class="portfolio-card reveal">
                 <div class="card-info">
-                    <h4 data-i18n="proj1_title">Mijozlar uchun Veb-sayt</h4>
-                    <p data-i18n="proj1_desc">Zamonaviy interfeys va animatsiyalarga ega, to'liq moslashuvchan (responsive) restauran sayti.</p>
-                    <a href="https://shakxriyarr-commits.github.io/qopoq-somsa/" class="btn-link"><span data-i18n="btn_visit">Saytga o'tish</span> <i class="fas fa-arrow-right"></i></a>
+                    <h4 data-i18n="proj1_title">Aqlli Uy Loyihasi</h4>
+                    <p data-i18n="proj1_desc">Internet orqali chiroqlar, eshik qulflari va haroratni boshqaradigan to'liq avtomatlashgan tizim.</p>
+                    <a href="#" class="btn-link"><span data-i18n="btn_visit">Loyihani ko'rish</span> <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="portfolio-card reveal">
                 <div class="card-info">
-                    <h4 data-i18n="proj2_title">Do'kon Telegram Boti</h4>
-                    <p data-i18n="proj2_desc">Korzinka tizimi, buyurtmalarni qabul qilish va mukammal admin menyusiga ega bot.</p>
-                    <a href="https://t.me/cofefood_bot" class="btn-link"><span data-i18n="btn_visit_bot">Botga o'tish</span> <i class="fas fa-arrow-right"></i></a>
+                    <h4 data-i18n="proj2_title">Avtonom Robot</h4>
+                    <p data-i18n="proj2_desc">Datchiklar yordamida to'siqlarni aylanib o'tuvchi va belgilangan chiziq bo'ylab harakatlanuvchi aqlli mashina.</p>
+                    <a href="#" class="btn-link"><span data-i18n="btn_visit_bot">Videoni ko'rish</span> <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="portfolio-card reveal">
                 <div class="card-info">
-                    <h4 data-i18n="proj3_title">Maxsus Veb Loyiha</h4>
-                    <p data-i18n="proj3_desc">JavaScript yordamida yozilgan murakkab funksionallikka ega shaxsiy portfolio va blog.</p>
-                    <a href="https://shakxriyarr-commits.github.io/instagram/" class="btn-link"><span data-i18n="btn_visit">Saytga o'tish</span> <i class="fas fa-arrow-right"></i></a>
+                    <h4 data-i18n="proj3_title">Robot Qo'l (Manipulyator)</h4>
+                    <p data-i18n="proj3_desc">Servo motorlar va potensiometrlar yordamida harakatlanadigan, masofadan boshqariladigan robot qo'l.</p>
+                    <a href="#" class="btn-link"><span data-i18n="btn_visit">Loyihani ko'rish</span> <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -139,34 +781,34 @@
 
         <div class="footer-container">
             <div class="footer-brand">
-                <a href="#" class="logo">Shahriyor<span>.</span></a>
-                <p data-i18n="f_brand_desc">Yuqori sifatli veb-saytlar va murakkab Telegram botlar yaratish — mening asosiy maqsadim.</p>
+                <a href="#" class="logo">Mustajob<span>.</span></a>
+                <p data-i18n="f_brand_desc">Yuqori sifatli robotlar va innovatsion aqlli tizimlar yaratish — mening asosiy maqsadim.</p>
             </div>
 
             <div class="footer-links-grid">
                 <div class="footer-column">
                     <h4 data-i18n="f_col1">XIZMATLAR</h4>
                     <ul>
-                        <li><a href="#projects" data-i18n="s1">Web Dasturlash</a></li>
-                        <li><a href="#projects" data-i18n="s2">Telegram Botlar</a></li>
-                        <li><a href="#projects" data-i18n="s3">UI/UX Dizayn</a></li>
-                        <li><a href="#projects" data-i18n="s4">SMM Panel</a></li>
+                        <li><a href="#projects" data-i18n="s1">Robototexnika</a></li>
+                        <li><a href="#projects" data-i18n="s2">Aqlli Uy</a></li>
+                        <li><a href="#projects" data-i18n="s3">IoT Tizimlari</a></li>
+                        <li><a href="#projects" data-i18n="s4">Elektronika</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4 data-i18n="f_col2">TEXNOLOGIYALAR</h4>
                     <ul>
-                        <li><a href="#contact">JavaScript (ES6+)</a></li>
-                        <li><a href="#contact">HTML5 & CSS3</a></li>
-                        <li><a href="#contact">Node.js / Python</a></li>
-                        <li><a href="#contact">Acode Editor</a></li>
+                        <li><a href="#contact">C++ / Python</a></li>
+                        <li><a href="#contact">Arduino & Raspberry Pi</a></li>
+                        <li><a href="#contact">IoT & Datchiklar</a></li>
+                        <li><a href="#contact">Mexatronika</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4 data-i18n="f_col3">MA'LUMOT</h4>
                     <ul>
                         <li><a href="#navba" data-i18n="i1">Portfolio</a></li>
-                        <li><a href="https://kwork.com/user/shakxriyarr" data-i18n="i2">Kwork Profil</a></li>
+                        <li><a href="#" data-i18n="i2">GitHub Profil</a></li>
                         <li><a href="#about" data-i18n="i3">Tajriba</a></li>
                         <li><a href="#contact" data-i18n="i4">Bog'lanish</a></li>
                     </ul>
@@ -175,6 +817,203 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(5, 8, 20, 0.95)';
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.5)';
+            } else {
+                navbar.style.background = 'rgba(5, 8, 20, 0.8)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        async function sendToTelegram(event) {
+            event.preventDefault(); 
+
+            const token = "8632545443:AAHTJOZsijXigu-hGll6eACNEtv3HNfIKa8"; 
+            const chatId = "8030496668"; 
+            
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value; 
+            const message = document.getElementById('userMessage').value;
+            const submitBtn = document.querySelector('#tgForm button');
+
+            if(!name || !phone || !message) {
+                alert("Iltimos, barcha maydonlarni to'ldiring!");
+                return;
+            }
+
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = "Yuborilmoqda... <i class='fas fa-spinner fa-spin'></i>";
+            submitBtn.disabled = true;
+
+            const fullMessage = `📩 Saytdan Yangi Xabar!\n\n👤 Kimdan: ${name}\n📞 Tel raqam: ${phone}\n📝 Xabar: ${message}`;
+            const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: fullMessage
+                    })
+                });
+
+                if(response.ok) {
+                    alert("Xabar muvaffaqiyatli yuborildi! Tez orada javob beraman.");
+                    document.getElementById('userName').value = "";
+                    document.getElementById('userPhone').value = "";
+                    document.getElementById('userMessage').value = "";
+                } else {
+                    alert("Xatolik! Token yoki Chat ID xato bo'lishi mumkin.");
+                }
+            } catch (e) {
+                alert("Tarmoq xatosi! Internet ulanishingizni tekshiring.");
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        const i18n = {
+            ru: {
+                nav_home: "Главная", nav_about: "Обо мне", nav_services: "Услуги", nav_projects: "Мои проекты", nav_contact: "Контакты",
+                hero_hi: "Привет, я <span>Сабиров Мустажоб</span>",
+                hero_role: "Инженер по Робототехнике и Мехатронике",
+                hero_btn_projects: "Смотреть проекты",
+                hero_btn_contact: "Сделать заказ",
+                about_title: "Обо <span>мне</span>",
+                about_text: "Меня зовут Мустажоб. Я увлекаюсь робототехникой и инженерией. За это время я научился создавать умные системы и автономных роботов с использованием Arduino, Raspberry Pi и различных датчиков. Я постоянно применяю эти знания на практике и развиваюсь в области мехатроники.",
+                services_title: "Мои <span>Услуги</span>",
+                srv_web_title: "Робототехника",
+                srv_web_desc: "Создаю автономных роботов и умные устройства любой сложности с помощью Arduino и Raspberry Pi.",
+                srv_bot_title: "Системы Умный Дом",
+                srv_bot_desc: "Системы управления для домов и офисов на основе технологий IoT (Интернет вещей).",
+                srv_design_title: "Электроника",
+                srv_design_desc: "Проектирование схем, программирование микроконтроллеров и безопасная сборка электрических цепей.",
+                projects_title: "Мои <span>Проекты</span>",
+                proj1_title: "Проект Умный Дом",
+                proj1_desc: "Полностью автоматизированная система управления освещением, дверными замками и температурой через интернет.",
+                proj2_title: "Автономный Робот",
+                proj2_desc: "Умная машина, которая с помощью датчиков обходит препятствия и движется по заданной линии.",
+                proj3_title: "Роботизированная Рука",
+                proj3_desc: "Роботизированная рука с дистанционным управлением с помощью серводвигателей и потенциометров.",
+                btn_visit: "Смотреть проект",
+                btn_visit_bot: "Смотреть видео",
+                contact_title: "Свяжитесь <span>со мной</span>",
+                contact_desc: "Реализуем ваш проект вместе! Оставьте мне сообщение.",
+                ph_name: "Ваше имя",
+                ph_phone: "Ваш телефон (например: +99890...)",
+                ph_msg: "Напишите ваше сообщение...",
+                btn_send: "Отправить",
+                f_brand_desc: "Создание качественных роботов и инновационных умных систем — моя главная цель.",
+                f_col1: "УСЛУГИ", f_col2: "ТЕХНОЛОГИИ", f_col3: "ИНФОРМАЦИЯ",
+                s1: "Робототехника", s2: "Умный Дом", s3: "IoT Системы", s4: "Электроника",
+                i1: "Портфолио", i2: "Профиль GitHub", i3: "Опыт", i4: "Контакты"
+            },
+            uz: {
+                nav_home: "Asosiy", nav_about: "Men Haqimda", nav_services: "Xizmatlar", nav_projects: "Loyihalarim", nav_contact: "Aloqa",
+                hero_hi: "Salom, men <span>Sabirov Mustajob</span>",
+                hero_role: "Robototexnika va Mexatronika Muhandisi",
+                hero_btn_projects: "Loyihalarni Ko'rish",
+                hero_btn_contact: "Buyurtma Berish",
+                about_title: "Men <span>Haqimda</span>",
+                about_text: "Mening ismim Mustajob. Robototexnika va muhandislik sohasiga juda qiziqaman. Shu vaqt ichida Arduino, Raspberry Pi va turli datchiklar yordamida aqlli tizimlar hamda avtonom robotlar yaratishni o'rgandim. Men bu bilimlarni muntazam ravishda amaliyotda qollab, mexatronika yo'nalishida o'z ustimda ishlamoqdaman.",
+                services_title: "Mening <span>Xizmatlarim</span>",
+                srv_web_title: "Robototexnika",
+                srv_web_desc: "Arduino va Raspberry Pi yordamida har qanday murakkablikdagi avtonom robotlar va aqlli qurilmalar yarataman.",
+                srv_bot_title: "Aqlli Uy Tizimlari",
+                srv_bot_desc: "Uylar va ofislar uchun IoT (Internet of Things) texnologiyalari asosida qulay boshqaruv tizimlari.",
+                srv_design_title: "Elektronika",
+                srv_design_desc: "Sxemalar chizish, mikrokontrollerlarni dasturlash va elektr zanjirlarini xavfsiz yig'ish.",
+                projects_title: "Mening <span>Loyihalarim</span>",
+                proj1_title: "Aqlli Uy Loyihasi",
+                proj1_desc: "Internet orqali chiroqlar, eshik qulflari va haroratni boshqaradigan to'liq avtomatlashgan tizim.",
+                proj2_title: "Avtonom Robot",
+                proj2_desc: "Datchiklar yordamida to'siqlarni aylanib o'tuvchi va belgilangan chiziq bo'ylab harakatlanuvchi aqlli mashina.",
+                proj3_title: "Robot Qo'l (Manipulyator)",
+                proj3_desc: "Servo motorlar va potensiometrlar yordamida harakatlanadigan, masofadan boshqariladigan robot qo'l.",
+                btn_visit: "Loyihani ko'rish",
+                btn_visit_bot: "Videoni ko'rish",
+                contact_title: "Men bilan <span>Aloqa</span>",
+                contact_desc: "Loyihangizni birgalikda amalga oshiramiz! Menga xabar qoldiring.",
+                ph_name: "Ismingiz",
+                ph_phone: "Telefon raqamingiz (masalan: +99890...)",
+                ph_msg: "Xabaringizni yozing...",
+                btn_send: "Yuborish",
+                f_brand_desc: "Yuqori sifatli robotlar va innovatsion aqlli tizimlar yaratish — mening asosiy maqsadim.",
+                f_col1: "XIZMATLAR", f_col2: "TEXNOLOGIYALAR", f_col3: "MA'LUMOT",
+                s1: "Robototexnika", s2: "Aqlli Uy", s3: "IoT Tizimlari", s4: "Elektronika",
+                i1: "Portfolio", i2: "GitHub Profil", i3: "Tajriba", i4: "Bog'lanish"
+            }
+        };
+
+        function changeLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                el.innerHTML = i18n[lang][key];
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                el.placeholder = i18n[lang][key];
+            });
+
+            document.getElementById('btn-uz').classList.toggle('active', lang === 'uz');
+            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+            
+            document.documentElement.lang = lang;
+            
+            localStorage.setItem('lang', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('lang') || 'uz';
+            changeLang(savedLang);
+        });
+
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+    </script>
 </body>
 </html>
