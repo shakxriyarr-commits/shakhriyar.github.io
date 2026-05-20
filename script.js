@@ -66,7 +66,7 @@ async function sendToTelegram(event) {
 
     // DIQQAT: O'zingizning bot tokeningiz va chat ID raqamingizni shu yerga yozing
     const token = "8632545443:AAHTJOZsijXigu-hGll6eACNEtv3HNfIKa8"; 
-    const chatId = "8030496668"; 
+    const chatId = "8560174808"; 
     
     const name = document.getElementById('userName').value;
     const phone = document.getElementById('userPhone').value; // Telefon raqamni olish
